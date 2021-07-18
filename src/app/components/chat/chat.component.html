@@ -1,0 +1,200 @@
+<div id="fugu-messenger" class="fuguCss fugu-messenger">
+  <div id="fugu-messenger-header-div" [ngClass]="{'spacing-left':hideBackBtn && messages.length==0}"
+    class="proxima-regular">
+    <div class="header-content">
+      <span *ngIf="commonService.showBackButton" class="back-icon-span"
+        [ngClass]="{'visibility-0':hideBackBtn && messages.length==0}" (click)="backToConversations()">
+        <img src="assets/img/backArrow.svg" class="back-icon" />
+      </span>
+      <!-- <div class="labelHeader">
+        {{labelHeader}}
+      </div> -->
+      <div class="label-header flex-grow d-flex flex-column justify-content-center">
+        <span>{{labelHeader}}</span>
+        <span class="typing-message mt-1" *ngIf="isAgentTyping" [@typingSlideIn]>
+          {{isAgentTypingName.split(' ')[0] + ' is '}}typing...
+        </span>
+        <span class="typing-message mt-1" *ngIf="isUserTyping" [@typingSlideIn]>
+          {{isAgentTypingName.split(' ')[0] + ' is '}}typing...
+        </span>
+      </div>
+    </div>
+    <!-- <a class="explore-dashboard tooltip-container" [href]="(fuguWidgetService.fuguWidgetData.dashboard_url ? fuguWidgetService.fuguWidgetData.dashboard_url
+     :'https://hippochat.io' ) + '/#/dashboard/all/chats/' + activeChannelId + '?access_token=' + access_token"
+      target="_blank"><img src="assets/img/explore_dashboard.png">
+      <span class="tooltip">{{commonService.redirectionTooltipText}}</span>
+    </a> -->
+    <div (click)="oncrossClick()" class="cancel-btn-header2"></div>
+  </div>
+  <div id="fugu-messenger-main-div" class="fuguCss fugu-messenger-main-div messages-container">
+    <div id="loader-div" *ngIf="showLoader">
+      <img id="loader-img" src="assets/img/ring.gif" />
+    </div>
+    <div id="messageScrollDiv" (wheel)="disableScroll($event,scroll)" [ngClass]="{'pad-bot': buttonFields.id}"
+      (touchmove)="onTouchMove($event,scroll)" #scroll (scroll)="onMessagesScroll()">
+      <div *ngFor="let messageItem of messages;let i=index" class="proxima-regular message-row"
+        [@fadeSlideInMessages]="messageItem.state?messageItem.state:'new'">
+        <!--&& (messageItem.message.toString().trim()!='' || messageItem.image_url)-->
+
+        <div class="message-container"
+          *ngIf="(messageItem.message_type==MessageTypeEnum.Customer_Agent_Message || messageItem.message_type==MessageTypeEnum.Image_Message ||
+        messageItem.message_type==MessageTypeEnum.File_Message || messageItem.message_type==MessageTypeEnum.Form_Message || messageItem.message_type==MessageTypeEnum.Bot_Text_Message ||
+        messageItem.message_type == MessageTypeEnum.Payment_Message || messageItem.message_type==MessageTypeEnum.Feedback_Message || messageItem.message_type==MessageTypeEnum.Custom_Action_Message)"
+          [ngClass]="{'agent-message': (messageItem.user_type == UserTypeEnum.Agent ||
+                                       (chatType == ChatTypeEnum.AdminToAdmin && messageItem.user_id != commonService.userDetails.user_id)),
+          'user-message': ((chatType != ChatTypeEnum.AdminToAdmin && messageItem.user_type == UserTypeEnum.Customer) || (chatType == ChatTypeEnum.AdminToAdmin
+          && messageItem.user_id == commonService.userDetails.user_id)) ||
+          (messageItem.user_type == UserTypeEnum.Bot) ||
+          messageItem.message_type == MessageTypeEnum.Custom_Action_Message ||
+          messageItem.message_type == MessageTypeEnum.Bot_Text_Message,
+          'private-message':  messageItem.message_type == MessageTypeEnum.Private_Message,
+           'bot-message': (messageItem.message_type == MessageTypeEnum.Feedback_Message || messageItem.message_type == MessageTypeEnum.Form_Message )}">
+          <h5 *ngIf="i==0 || (messages[i-1].user_id!=messageItem.user_id )" class="col-xs-12">
+            <span *ngIf="messageItem.user_id == commonService.userDetails.user_id">You</span>
+            <!--(businessNameToReplace==messageItem.full_name)?labelHeader:messageItem.full_name-->
+            <span *ngIf="messageItem.user_id != commonService.userDetails.user_id">{{messageItem.full_name}}</span>
+          </h5>
+          <div class="message-content position-relative" [ngClass]="{
+            'min-width-60': messageItem.message_type == MessageTypeEnum.Payment_Message,
+            'conv-end': (i!=0 && messages[i-1].user_id==messageItem.user_id  && (i==messages.length-1 || messages[i+1].user_id!=messageItem.user_id || messages[i+1].message_type!=messageItem.message_type) && messages[i-1].message_type==messageItem.message_type),
+            'conv-start': (i==0 || messages[i-1].user_id!=messageItem.user_id || messages[i-1].message_type!=messageItem.message_type) && (i!= messages.length - 1 && (messages[i+1].user_id==messageItem.user_id && messages[i+1].message_type==messageItem.message_type)),
+            'red-border': messageItem.message_status == MessageStatusEnum.Sending,
+               'feedback-content': messageItem.message_type == MessageTypeEnum.Feedback_Message }">
+            <app-message-content [messageItem]="messageItem" (openMediaPlayer)="mediaPlayerObject = $event">
+            </app-message-content>
+            <img
+              *ngIf="[IntegrationTypeEnum.MESSENGER,IntegrationTypeEnum.EMAIL].includes(messageItem.integration_source)"
+              class="integration-logo"
+              [src]="messageItem.integration_source == IntegrationTypeEnum.MESSENGER ?
+                                                                            'assets/img/messenger-source-icon.svg': 'assets/img/email-icon.svg'">
+          </div>
+          <div
+            *ngIf="(i==last_customer_time_index && messageItem.user_type==UserTypeEnum.Customer )|| (i==last_agent_time_index && messageItem.user_type==UserTypeEnum.Agent)"
+            class="col-xs-12 text-left read-unread-div">
+            <!--removed float right-->
+            <div *ngIf="(i==messages.length-1) || i!=messages.length-1" style="width:100%">
+              <ng-container *ngIf="chatType != ChatTypeEnum.AdminToAdmin">
+                <p *ngIf="(messageItem.message_status == MessageStatusEnum.Sent) && messageItem.user_type == UserTypeEnum.Customer"
+                  class="chat-date-time text-right" style="float:right">Sent
+                  <span style="text-transform:lowercase"> {{messageItem.date_time | date:"jm"}}</span>
+                </p>
+                <p *ngIf="messageItem.message_status == MessageStatusEnum.Read  && messageItem.user_type == UserTypeEnum.Customer"
+                  class="chat-date-time text-right" style="float:right">Read
+                  <span class="chat-date-time"
+                    style="text-transform:lowercase">{{messageItem.date_time | date:"jm"}}</span>
+                </p>
+                <p *ngIf="messageItem.message_status == MessageStatusEnum.Delivered  && messageItem.user_type == UserTypeEnum.Customer"
+                  class="chat-date-time text-right" style="float:right">Delivered
+                  <span class="chat-date-time"
+                    style="float:right;text-transform:lowercase">{{messageItem.date_time | date:"jm"}}</span>
+                </p>
+                <p *ngIf="messageItem.user_type == UserTypeEnum.Agent" class="chat-date-time text-left">
+                  <span class="chat-date-time;text-transform:lowercase">{{messageItem.date_time | date:"jm"}}</span>
+                </p>
+              </ng-container>
+              <ng-container
+                *ngIf="chatType == ChatTypeEnum.AdminToAdmin && messageItem.user_id == commonService.userDetails.user_id">
+                <p *ngIf="(messageItem.message_status == MessageStatusEnum.Sent)" class="chat-date-time text-right"
+                  style="float:right">Sent:
+                  <span style="float:right;text-transform:lowercase"> {{messageItem.date_time | date:"jm"}}</span>
+                </p>
+                <p *ngIf="messageItem.message_status == MessageStatusEnum.Read" class="chat-date-time text-right"
+                  style="float:right">Read:
+                  <span class="chat-date-time"
+                    style="float:right;text-transform:lowercase">{{messageItem.date_time | date:"jm"}}</span>
+                </p>
+              </ng-container>
+            </div>
+            <div *ngIf="i==messages.length-1 && messageItem.message_status==MessageStatusEnum.Sending">
+              <p class="chat-date-time text-right" style="float:right">
+                <span>Sending...</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="message-container agent-message text-align-right loading proxima-regular" *ngIf="isAgentTyping" >
+        <h5 class="col-xs-12 typer-name">{{this.isAgentTypingName}}</h5>
+        <div class="message-content">
+          <span>•</span>
+          <span>•</span>
+          <span>•</span>
+        </div>
+      </div>
+      <div class="message-container agent-message text-align-left loading proxima-regular" *ngIf="isUserTyping" >
+        <h5 *ngIf="chatType == ChatTypeEnum.AdminToAdmin" class="col-xs-12">{{this.isAgentTypingName}}</h5>
+        <div class="message-content">
+          <span>•</span>
+          <span>•</span>
+          <span>•</span>
+        </div>
+      </div> -->
+      <p class="mb-0 text-right proxima-regular pr-4 pb-2 file-uploading-text" *ngIf="file_uploading_text">Uploading
+        file...</p>
+    </div>
+    <!-- scroll to bottom floating button -->
+    <span class="floating-btn d-flex justify-content-center align-items-center"
+      *ngIf="showFloatingBtn && messages.length" (click)="scrollToBottom()" [@scaleInOut]>
+      <span class="badge-unread" *ngIf="(messages.length - showFloatingBtnLength) && showFloatingBtnLength">
+        <span class="badge-floating-btn">{{messages.length - showFloatingBtnLength}}</span>
+      </span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" width="21" height="21">
+        <path fill="#263238" fill-opacity=".33" d="M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z"></path>
+      </svg>
+    </span>
+    <div id="actionsContainer" [@fadeSlideIn]="alive" class="proxima-regular"
+      [ngClass]="{'white-bg': commonService.iPadState}">
+      <ng-container *ngIf="!replyDisabled">
+
+        <textarea (keyup)="autoGrow($event)" style="min-height:auto;" *ngIf="!touchdevice" autofocus [show]="true"
+          id="textarea-send-message" [(ngModel)]="messageToSend" placeholder="Type your message..."
+          (keydown)="onTextarea_keydown($event)" (focus)="onTextAreaFocus($event)"
+          (blur)="onTextAreaBlur($event)"></textarea>
+
+        <textarea (keyup)="autoGrow($event)" *ngIf="touchdevice" id="textarea-send-message" [(ngModel)]="messageToSend"
+          placeholder="Type your message..." (keydown)="onTextarea_keydown($event)" (focus)="onTextAreaFocus($event)"
+          (blur)="onTextAreaBlur($event)" class="txtarea-mobile"></textarea>
+        <div class="action-buttons">
+          <button [ngClass]="{ 'active-component-send' : messageToSend.length>0 }" id="btn-send" (click)="onSendClick()"
+            (touch)="onSendClick()">
+            <img src="assets/img/send.svg" />
+          </button>
+          <button id="btn-attachment" *ngIf="!fuguWidgetService.fuguWidgetData.is_payment_enabled
+              || activeChannelId < 0" (click)="onAttchmentClick(fileInput)" (touch)="onAttchmentClick(fileInput)">
+            <img src="assets/img/attach.svg" />
+            <!-- accept="*" when SDK gets updated -->
+            <input type="file" #fileInput (change)="prepareFilesForUpload($event)" accept="*" multiple />
+          </button>
+          <div class="plus_dropup d-flex align-items-center"
+            *ngIf="fuguWidgetService.fuguWidgetData.is_payment_enabled && activeChannelId > 0">
+            <button id="btn-plus" class="cursor-hand outline-none box-shadow-none" (click)="dropup_open = !dropup_open">
+              <img src="assets/img/plus-icon.svg" />
+            </button>
+            <div class="dropup_content d-flex-normal flex-column" [ngClass]="{'d-none' : !dropup_open}">
+              <button class="pl-3 p-2
+                           cursor-hand no-btn-style text-left outline-none d-flex align-items-center"
+                (click)="onAttchmentClick(fileInput);" (touch)="onAttchmentClick(fileInput)">
+                Attachment
+                <!-- accept="*" when SDK gets updated -->
+                <input type="file" style="display: none" #fileInput (change)="prepareFilesForUpload($event)"
+                  accept="*" />
+              </button>
+              <button class="pl-3 p-2
+                           cursor-hand no-btn-style text-left outline-none d-flex align-items-center"
+                (click)="openPaymentRequestForm();dropup_open = false">Request Payment</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="replyDisabled">
+        <span class="text-center w-100 no-reply">You cannot reply to this conversation</span>
+      </ng-container>
+      <div class="buttons-container" *ngIf="buttonFields">
+        <button *ngFor="let button of buttonFields.content_value"
+          (click)="selectFormType(button.action_id , button.button_title)"
+          class="btn message-btn">{{button.button_title}}</button>
+      </div>
+    </div>
+  </div>
+  <app-media-player [messageData]="mediaPlayerObject.message_data" *ngIf="mediaPlayerObject.is_open"
+    (closePlayer)="mediaPlayerObject.is_open = false"></app-media-player>

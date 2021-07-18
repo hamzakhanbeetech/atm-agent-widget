@@ -1,0 +1,13 @@
+<div class="backdrop" keyboard-event (esc)="onCloseClick($event)" [isEnabled]="true">
+  <div id="popup" [ngStyle]="{'min-width':minWidth,'min-height':minHeight,'max-width': maxWidth}">
+  <span class="fa fa-times btn-close" (click)="onCloseClick($event)"></span>
+
+    <div class="header">{{header}}</div>
+    <div class="body">
+      <ng-content select="[body]"></ng-content>
+    </div>
+    <div class="footer pt-3">
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="d-flex align-items-center justify-content-center flex-column h-100 w-100 parent">
+  <h2>Payment Request</h2>
+  <!--<div class="image-container mb-2">-->
+    <!--<div *ngIf="!paymentObj.image_url" class="add-image-container cursor-hand d-flex justify-content-center align-items-center" (click)="onAttchmentClick(fileInput)">-->
+      <!--Add an Image-->
+      <!--<input class="d-none" type="file" accept="image/*" #fileInput (change)="onFileSelect($event)">-->
+    <!--</div>-->
+    <!--<img *ngIf="paymentObj.image_url" [src]="paymentObj.image_url" class="image-view">-->
+  <!--</div>-->
+  <form role="form" [formGroup]="paymentForm" class="d-flex flex-column w-50">
+    <div class="d-flex align-items-center mb-2">
+      <input class="box-shadow-none form-control outline-none input-border" type="text" formControlName="title" placeholder="Title">
+    </div>
+    <div class="d-flex mb-2">
+      <select class="form-control" style="height: 48px;" formControlName="currency">
+        <option *ngFor="let currency of currencies" [value]="currency.symbol">
+          {{currency.code}} ({{currency.symbol}})
+        </option>
+      </select>
+    </div>
+    <ng-container formArrayName="items_description"
+                  *ngFor="let option of paymentForm.get('items_description')['controls']; let i = index;">
+      <div [formGroupName]="i" class="mb-2 d-flex align-items-center">
+        <input class="box-shadow-none form-control outline-none input-border mr-2" type="text"
+               placeholder="Item description" formControlName="header">
+        <input class="box-shadow-none form-control outline-none input-border" (input)="checkPriceLength(i);calculateTotalAmount()"
+               type="number" placeholder="Price" formControlName="content" min="0" step=".01">
+        <img *ngIf="i > 0" src="assets/img/cross-icon-search.svg" (click)="removeOption(i);calculateTotalAmount()"
+             class="cursor-hand ml-1 hw-18">
+      </div>
+    </ng-container>
+    <div class="d-flex justify-content-between">
+      <div class="add-option-btn" (click)="addOption()">
+        <span class="cursor-hand">+ Add an option</span>
+      </div>
+      Total Amount: {{paymentObj.total_amount}}
+    </div>
+    <button class="btn mt-2 mb-3" (click)="requestPayment()" [disabled]="!paymentForm.valid">
+      Request payment
+    </button>
+  </form>
+
+</div>

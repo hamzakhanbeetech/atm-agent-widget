@@ -1,0 +1,14 @@
+<div id="fugu-container">
+  <div id="video-sound" class="d-none"></div>
+  <div id="sound" style="display:none"></div>
+  <!-- <div *ngIf="showVideoCallReceived" class="video-action-buttons p-3 d-flex flex-column justify-content-center align-items-center">
+    <p class="mt-0 incoming-call">Incoming {{caller_info.call_type == 'AUDIO' ? 'Audio' : 'Video'}} Call <br>{{caller_info.full_name}}</p>
+    <div id="buttons">
+      <button class="btn btn-success" (click)="acceptVideoCall()">Accept</button>
+      <button class="btn btn-danger" (click)="rejectVideoCall()">Reject</button>
+    </div>
+  </div> -->
+  <div id="fuguChatsListContainer" class="routing-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

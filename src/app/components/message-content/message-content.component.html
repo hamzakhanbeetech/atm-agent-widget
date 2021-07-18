@@ -1,0 +1,116 @@
+<p class="message-to-be-send" *ngIf="messageItem.message_type != MessageTypeEnum.Image_Message && messageItem.message_type != MessageTypeEnum.Form_Message
+&& messageItem.message_type != MessageTypeEnum.Feedback_Message && messageItem.message_type != MessageTypeEnum.Custom_Action_Message" class="rel"
+  [innerHTML]="messageItem.message | url_phone"></p>
+<span (click)="openImage(messageItem.image_url)" *ngIf="messageItem.message_type == MessageTypeEnum.Image_Message"
+  class="image-messages message-to-be-send"
+  [ngStyle]="{'background-image': 'url(' + (messageItem.thumbnail_url) + ')','text-decoration':'none'}">
+</span>
+<div *ngIf="messageItem.message_type == MessageTypeEnum.Payment_Message" class="payment-message">
+  <div class="custom-action-img" *ngIf="messageItem.custom_action.image_url" [ngStyle]="{'background-image': 'url(' + (messageItem.custom_action.image_url) + ')'}"></div>
+  <div class="body-div">
+    <p class="custom-action-title-payment pb-1" *ngIf="messageItem.custom_action.title">{{messageItem.custom_action.title}}</p>
+    <p class="custom-action-title-description" *ngIf="messageItem.custom_action.title_description">{{messageItem.custom_action.title_description}}</p>
+    <div class="custom-action-description" *ngIf="messageItem.custom_action.description">
+      <p class="custom-action-description-item d-flex" *ngFor="let item of messageItem.custom_action.description">
+        <span class="mr-3">{{item.header}}</span>
+        <span class="payment-content">{{item.content}}</span>
+      </p>
+    </div>
+    <div class="custom-action-action_buttons d-flex" *ngIf="messageItem.custom_action.action_buttons">
+      <button [ngClass]="{'cursor-hand': messageItem.user_id != commonService.userDetails.user_id}" class="custom-action-action_buttons-item w-100 payment-btn m-1"
+              *ngFor="let item of messageItem.custom_action.action_buttons" (click)="messageItem.user_id != commonService.userDetails.user_id
+              ? sendPaymentMessage(item,messageItem) : ''">
+        {{item.button_text}}
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="messageItem.message_type == MessageTypeEnum.Custom_Action_Message" class="custom-action-message">
+  <div class="body-div">
+    <p class="custom-action-title pb-1">{{messageItem.message}}</p>
+    <div class="custom-action-action_buttons d-flex flex-wrap">
+      <button class="custom-action-action_buttons-item w-100 mb-2 opacity-5"
+              *ngFor="let item of messageItem.content_value" [ngStyle]="{'backgroundColor':
+               messageItem.selected_btn_id != item.btn_id ? item.btn_color : item.btn_selected_color,
+               'color': messageItem.selected_btn_id != item.btn_id ? item.btn_title_color : item.btn_title_selected_color}">
+        {{item.btn_title}}
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="messageItem.message_type == MessageTypeEnum.File_Message" class="message-to-be-send">
+  <div class="d-flex align-items-center" *ngIf="messageItem.document_type != 'video'">
+    <div class="position-relative d-flex align-items-center justify-content-start"
+         *ngIf="messageItem.file_name">
+      <img class="float-right cursor-hand attachment-icon" src="assets/img/download-icon.png" alt="download-icon">
+      <span class="position-absolute attachment-img-text">{{messageItem.file_name.split('.')[messageItem.file_name.split('.').length
+      - 1] && messageItem.file_name.split('.').length > 1 ? messageItem.file_name.split('.')[messageItem.file_name.split('.').length -
+        1].toUpperCase()
+        : 'FILE'}}
+    </span>
+    </div>
+    <a target="_blank" rel="noopener noreferrer" [href]="messageItem.url" class="attachment-link d-flex outline-none pl-1 overflow-hidden">
+      {{messageItem.file_name}}
+    </a>
+  </div>
+  <div *ngIf="messageItem.document_type == 'video'" class="d-flex justify-content-center align-items-center image-messages message-to-be-send position-relative"
+       [ngStyle]="{'background-image': 'url(' + (messageItem.thumbnail_url) + ')'}" (click)="openMediaPlayer.emit({
+         is_open: true,
+         message_data: messageItem
+       })">
+    <img src="assets/img/video-play.svg" class="position-absolute video-play-image">
+  </div>
+</div>
+
+<div *ngIf="messageItem.message_type == MessageTypeEnum.Form_Message" class="details-container rel" >
+  <span class="info-text abs input-title" *ngIf="currentIndex < messageItem.content_value[0].questions.length && messageItem.content_value[0].questions.length > 1" >({{currentIndex + 1}} of {{messageItem.content_value[0].questions.length}})</span>
+  <div class="detail" *ngFor="let detail of detailsFields; let i = index" >
+    <div class="form-group" *ngIf="detail.value && currentIndex > i" >
+      <label class="input-title" >{{detail.title + (detail.type == 'phone' ? ' (with country code)' : '')}}</label>
+      <div class="group-addon-container rel" >
+        <input type="{{detail.type}}" [disabled]="true" class="default-input" [(ngModel)]="detail.value" disabled >
+        <span class="group-addon abs right-aligned" ><button class="btn btn-white btn-checked btn-nohover" type="button" [disabled]="true" ><img src="assets/img/check-mark.png" style="width: 16px" ></button></span>
+      </div>
+    </div>
+    <div *ngIf="detailsForm">
+      <form [formGroup]="detailsForm" >
+        <div class="form-group" *ngIf="!detail.value && currentIndex == i"  >
+          <label class="input-title" >{{detail.title + (detail.type == 'phone' ? ' (with country code)' : '')}}</label>
+          <div class="group-addon-container rel" >
+            <input placeholder="{{detail.title}}" autofocus type="{{detail.type}}" class="default-input" formControlName="inputControl" disabled>
+            <span class="group-addon abs right-aligned" ><button class="btn btn-nohover" (click)="setDetail(i)" type="submit" [disabled]="true"><img src="assets/img/backArrow.svg" class="back-icon" /></button></span>
+          </div>
+          <app-control-message [control]="detailsForm.controls.inputControl" ></app-control-message>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="feedback-container" [ngClass]="{'align-center': messageItem.rating_given > 0 , 'pad-bot': (messageItem.is_rating_given && messageItem.comment) || !messageItem.is_rating_given}" *ngIf="messageItem.message_type == MessageTypeEnum.Feedback_Message" >
+  <div *ngIf="messageItem.rating_given <= 0" class="header" >{{messageItem.line_before_feedback}}</div>
+  <div *ngIf="messageItem.rating_given > 0" class="header emoji-header" >{{messageItem.line_after_feedback_1}}<img src="{{emojis[messageItem.rating_given - 1].src}}" ></div>
+  <div *ngIf="messageItem.rating_given > 0" class="secondary-header" >{{messageItem.line_after_feedback_2}}</div>
+  <div class="emojis-container" *ngIf="messageItem.rating_given <= 0" >
+    <div class="emoji" *ngFor="let emoji of emojis; let i = index" [ngClass]="{'active-emoji': (rating == i + 1)}" >
+      <div class="emoji-container">
+        <img src="{{emoji.src}}" >
+      </div>
+    </div>
+  </div>
+  <div class="footer" id="actionsContainer" [ngClass]="{'white-bg': !messageItem.is_rating_given}" *ngIf="(messageItem.is_rating_given && messageItem.comment) || !messageItem.is_rating_given" >
+      <!--<button (click)="submitRating()" class="btn" >Submit</button>-->
+      <form class="feedback-form" >
+        <div class="textarea-container" *ngIf="!messageItem.is_rating_given" >
+          <textarea disabled (keyup)="autoGrow($event)" [disabled]="messageItem.rating_given > 0" (keydown)="onTextarea_keydown($event)" id="textarea-send-message" name="textarea" [(ngModel)]="commentToSend" placeholder="{{messageItem.rating_given > 0 ? (messageItem.comment || 'No comment...') : 'Tell us more...' }}"></textarea>
+        </div>
+        <div *ngIf="messageItem.is_rating_given" class="comment-container" >{{messageItem.comment}}</div>
+        <div class="action-buttons" [ngClass]="{ 'active-component-send' : rating>0 }" *ngIf="messageItem.rating_given <= 0" >
+          <button [disabled]="messageItem.rating_given > 0" class="feedback-btn" id="btn-send" (click)="submitRating()" type="submit">
+            SUBMIT
+          </button>
+        </div>
+      </form>
+
+
+  </div>
+</div>

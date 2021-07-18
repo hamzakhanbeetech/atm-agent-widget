@@ -1,0 +1,35 @@
+.parent{
+  font-family: Proxima-Regular;
+}
+.hw-18{
+  min-width: 18px;
+  height: 18px;
+  width: 18px;
+}
+.input-border{
+  border: solid 1px #e4e4ed;
+}
+.input-border:focus{
+   border: solid 1px #6f6f6f;
+}
+/deep/ html {
+  height: 100%;
+  width: 100%;
+}
+/deep/ body{
+  width: 100%;
+  margin: 0;
+}
+.add-option-btn{
+  color: var(--color);
+}
+.add-image-container{
+  width: 200px;
+  height: 100px;
+  color: #6f6f6f;
+  background: #d1d1d4;
+}
+.image-view{
+  height: 100px;
+  width: 200px;
+}

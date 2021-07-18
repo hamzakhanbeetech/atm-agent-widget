@@ -1,0 +1,47 @@
+<div class="h-100 d-flex flex-column carousel-parent">
+  <div class="carousel-header d-flex">
+    <div class="top-icons">
+      <a class="download-link mr-4" [href]="messageData.url" download>
+        <img class="top-icon" src="assets/img/download-button.svg" alt="download-btn">
+      </a>
+      <img (click)="onCloseClick()" class="top-icon cursor-hand" src="assets/img/cross-icon.svg" alt="close">
+    </div>
+  </div>
+  <!-- For image popup from profile component -->
+  <div class="carousel-body d-flex h-100 justify-content-between" (click)="onCloseClick()">
+    <!--<div *ngIf="messageData.document_type == 'video'" class="d-flex flex-column h-100">-->
+    <!--<video height="90%" width="90%" controls class="d-flex align-self-center mt-4" (click)="$event.stopPropagation()">-->
+    <!--<source [src]="messageData.url" type="video/mp4">-->
+    <!--<source [src]="messageData.url" type="video/ogg">-->
+    <!--Your browser does not support the video tag.-->
+    <!--</video>-->
+    <!--</div>-->
+
+    <!--<div *ngIf="media.messageExtension == MessageExtensionEnum.AUDIO" class="d-flex flex-column h-100">-->
+    <!--<div class="d-flex flex-column mt-auto mb-auto" (click)="$event.stopPropagation()">-->
+    <!--<img src="../../../assets/img/audio.svg" class="d-flex mb-2">-->
+    <!--<audio controls class="d-flex align-self-center">-->
+    <!--<source [src]="media.message.url" type="audio/ogg">-->
+    <!--<source [src]="media.message.url" type="audio/mpeg">-->
+    <!--Your browser does not support the audio element.-->
+    <!--</audio>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div *ngIf="messageData.document_type == 'video'" class="d-flex flex-column
+                   align-items-center justify-content-center h-100 w-100">
+      <div *ngIf="!supportedVideoPlayerExtensions.includes(messageData.message_extension) else videoFromChat"
+      class="text-center">
+        We don't support this video, but you can download the video from above download icon.
+      </div>
+      <ng-template #videoFromChat>
+        <video height="90%" width="90%" controls class="d-flex align-self-center mt-4"
+               (click)="$event.stopPropagation()" id="video-player">
+          <source [src]="messageData.url" type="video/mp4">
+          <source [src]="messageData.url" type="video/ogg">
+          Your browser does not support the video tag.
+        </video>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2461 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Monst-Bold';
+    src: url('assets/fonts/Mont/Montserrat-Bold.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Monst-Regular';
+    src: url('assets/fonts/Mont/Montserrat-Regular.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Monst-Light';
+    src: url('assets/fonts/Mont/Montserrat-Light.ttf') format('truetype');
+    font-style: normal
+}
+@font-face {
+    font-family: 'Proxima-Bold';
+    src: url('assets/fonts/ProximaNova/ProximaNova-Bold.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima-SBold';
+    src: url('assets/fonts/ProximaNova/ProximaNova-Sbold.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima-Regular';
+    src: url('assets/fonts/ProximaNova/ProximaNova-Reg.ttf') format('truetype');
+    font-style: normal
+}
+@font-face {
+    font-family: 'Proxima-Light';
+    src: url('assets/fonts/ProximaNova/ProximaNova-Light.ttf') format('truetype');
+    font-style: normal;
+}
+.upper-cancel-image img {
+    width: 16px;
+    margin-top: 8px;
+}
+
+@-webkit-keyframes fugu-messenger-view-slide-left-in {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(8px);
+        transform: translateX(8px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+}
+
+@keyframes fugu-messenger-view-slide-left-in {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(8px);
+        transform: translateX(8px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+}
+@-webkit-keyframes fugu-messenger-view-slide-right-in {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-8px);
+        transform: translateX(-8px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+}
+
+@keyframes fugu-messenger-view-slide-right-in {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-8px);
+        transform: translateX(-8px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+}
+@-webkit-keyframes fugu-messenger-view-slide-bottom-in {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(18px);
+        transform: translateY(18px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@keyframes fugu-messenger-view-slide-bottom-in {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(18px);
+        transform: translateY(18px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+#fugu-chat-container{position: fixed;bottom:0;right:0;margin-right:1%;margin-bottom:1%; z-index: 9999999;touch-action: none}
+#fugu-chat-container div img{cursor: pointer; display: initial}
+#chat-box{background: #fff;height:65vh;width: 380px;left: 0;right: 0;border-radius: 5px;z-index: 99999999;
+    box-shadow: 0 5px 25px rgba(0,0,0,.16)!important;
+    /*transition: opacity 0.5s linear;*/
+    /*-webkit-transition: opacity 0.5s linear;*/
+    /*-moz-transition: opacity 0.5s linear;*/
+    /*-o-transition: opacity 0.5s linear;*/
+    /*-ms-transition: opacity 0.5s linear;*/
+    /*animation: slide-up-fade-in .3s ease-in-out;*/
+}
+#chat-box-header{background-color: #2196f3;height: 95px;border-top-left-radius: 5px;border-top-right-radius: 5px;padding-left: 15px;padding-right: 15px;width: 380px; -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;}
+#chat-header-div-left{padding-top: 8%}
+#fugu-messenger-header-divp:first-child {margin: 0;font-family: Monst-Regular;color: #fff;font-size: 20px;line-height: normal}
+#fugu-messenger-header-divp:nth-child(2) {margin: 0;font-family: Proxima-Light;color: #fff;font-size: 15px;line-height: normal}
+#chat-header-div-right{float: right}
+#chat-header-div-right p{margin:0;font-family:Proxima-Regular;color:#fff;font-size:17px;margin-right:11px;cursor:pointer}
+#header-logo-img{width: inherit;float: left;padding: 10px; cursor: pointer}
+#f-header-text-div{float: left;margin-left:5px;max-width:85%;}
+#back-img:hover{
+    background: rgba(51, 51, 51, 0.2);
+}
+.fuguCss .upper-cancel-image {float: right}
+.fuguCss .upper-cancel-image img:hover{background-color: rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 10px;
+}
+.fuguCss .new-message-span{
+    margin-left: 1px;
+    position: relative;
+    font-size: 10px;
+    float: left;
+    margin-top: -6px;
+    margin-bottom: 0px;
+    text-align: center;
+    padding: 3px 7px;
+    border-radius: 100px;
+    background: rgb(255, 255, 255);
+    font: 11px/15px "Helvetica Neue", sans-serif;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+}
+.fuguCss .f-new-conv-li {background-color:#eff0f3}
+#fugu-container #f-back-img{width: 14px}
+#fugu-container #chat-box-content{max-height: calc(65vh - 95px); height: calc(65vh - 95px)}
+#fugu-container #f-conv-ul{
+    list-style-type: none;
+    -webkit-padding-start:0px;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    overflow: auto;
+    max-height: 100%;
+    border-radius: 6px;
+    padding-bottom: 40px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-animation-name: fugu-messenger-view-slide-right-in;
+    animation-name: fugu-messenger-view-slide-right-in;
+    -webkit-animation-duration: .32s;
+    animation-duration: .32s;
+    -webkit-animation-timing-function: cubic-bezier(.23,1,.32,1);
+    animation-timing-function: cubic-bezier(.23,1,.32,1);
+    -webkit-animation-delay: .23s;
+    animation-delay: .23s;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
+    transition: transform .2s,-webkit-transform .2s;
+}
+#fugu-container #f-conv-ul.overflow{
+    padding-right: 5px;
+    margin-right: 5px;
+}
+#fugu-container #f-conv-ul li{
+    padding: 15px;
+    cursor: pointer;
+    width: 100%;
+    border-top: 1px solid #f3f4f5;
+    margin-top: 0px;
+    position: relative;
+    float: left;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    border-right: 1px solid #eaeaea;
+}
+#fugu-container #f-conv-ul li:last-child{
+    border-bottom: 0px;
+    border-right: none;
+}
+#fugu-container #f-conv-ul :nth-last-child(2){
+    border-bottom: 0px;
+}
+#fugu-container #f-conv-ul li .agentImage{float: left; width:30px;height: 30px;border-radius: 15px;}
+.fuguCss .f-channel-info{float: left;margin-left: 10px;line-height: normal;max-width: 37%;}
+.fuguCss .f-channel-time{
+    float: right;
+    font-size: 12px;
+    font-family: Proxima-Regular;
+    opacity: 0.67;
+    font-weight: 600;
+    color: #88838c;
+}
+.fuguCss .channel-labels{
+    font-family: Monst-Regular !important;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    margin: 0;
+    font-size: 14px;
+    color: #564f5c;
+    float: left;
+    max-width: 100%;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+.fuguCss .channel-messages{
+    font-family:Proxima-Regular;
+    -webkit-margin-before: 0em;-webkit-margin-after: 0em;
+    letter-spacing: 0.2px;
+    font-size: 13px;
+    line-height: 1;
+    text-align: left;
+    color: #88838c;
+    margin: 0;
+    padding: 4px 0 0 0;
+    /*overflow: hidden;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.fuguCss .channels-abbr{
+    width: 35.2px;
+    height: 35.2px;
+    border-radius: 20px;
+    background-color: #ccc;
+    color: #fff;
+    font-family: Proxima-Regular;
+    float: left;
+    text-align: center;
+    line-height: 35.2px;
+    font-size: 13px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+#fugu-container #chat-box-content{position: relative}
+#fugu-container #chat-cross-icon{height: 74px; width: 74px; border-radius: 37px;background-color: #2196f3;float: right;text-align: center}
+#fugu-container #chat-cross-icon img{text-align: center; margin-top: 33%}
+/*#input-message-div{position: absolute;width: 100%;bottom: 0}*/
+/*#input-message-div textarea{*/
+/*width: 100%;*/
+/*border: none;*/
+/*!* border-top: 1px solid #e4e3e3; *!*/
+/*outline: none;*/
+/*height: 70px;*/
+/*padding: 23px 45px 23px 25px;*/
+/*font-size: 14px;*/
+/*font-family: Proxima-Regular;*/
+/*background-color: #f4f7f9;*/
+/*color: #565867;*/
+/*!* transition: background-color .2s ease,box-shadow .2s ease; *!*/
+/*-webkit-box-sizing: border-box;*/
+/*-moz-box-sizing: border-box;*/
+/*box-sizing: border-box;*/
+/*resize: none;*/
+/*display: block;*/
+/*overflow-y: hidden;*/
+/*float: left;*/
+/*margin-top: 0px;*/
+/*}*/
+/*#input-message-div textarea:focus {*/
+/*background-color: #fff;*/
+/*box-shadow: 0 20px 30px 30px rgba(0,0,0,.08);*/
+/*}*/
+/*#input-message-div textarea::-webkit-input-placeholder { !* Chrome/Opera/Safari *!*/
+/*color: #565867;*/
+/*}*/
+/*#input-message-div textarea::-moz-placeholder { !* Firefox 19+ *!*/
+/*color: #565867;*/
+/*}*/
+/*#input-message-div textarea:-ms-input-placeholder { !* IE 10+ *!*/
+/*color: #565867;*/
+/*}*/
+/*#input-message-div textarea:-moz-placeholder { !* Firefox 18- *!*/
+/*color: #565867;*/
+/*}*/
+#send-button-img {
+    float: left;
+    width:17%;
+    background-color: #f4f7f9;
+    height: 70px;
+}
+.fuguCss .message-wrappers{background-color: #fff;padding: 12px;max-width: 60%;margin: 5px 25px 5px 25px;border-radius: 8px;float: left;position: relative; height: auto;
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.08)}
+.fuguCss .f-conv-name{font-family: Proxima-SBold;font-size: 15px;-webkit-margin-before: 0em;-webkit-margin-after: 0em;color: #2196f3}
+.fuguCss .f-conv-p{font-family: Proxima-Regular;font-size: 15px;word-wrap: break-word;white-space: pre-wrap;-webkit-margin-before: 2px;-webkit-margin-after: 0em;float: left;max-width: 100%}
+.fuguCss .f-conv-time-p{
+    font-family: Proxima-Regular;
+    font-size: 10px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0em;
+    color: #8e8e8e;
+    margin-top: 0px;
+    display: none;
+    font-style: italic;
+    float: left;
+}
+
+.fuguCss .agent-div{
+    display: block !important;
+    clear: both;
+}
+.fuguCss .user-div{
+    display: block !important;
+    clear: both;
+}
+
+.fuguCss .agent-div.last-message .f-conv-time-p,
+.fuguCss .user-div.last-message .f-conv-time-p{
+    display: block !important;
+    clear: both;
+}
+.fuguCss .fugu-user-message-divs+.f-conv-time-p{
+    margin-top: 5px;
+    float: right;
+}
+.fuguCss .agent-div.last-message .f-conv-time-p {
+    margin-left: 10px;
+    padding-top: 5px;
+}
+.fuguCss .agent-div.last-message,
+.fuguCss .user-div.last-message{
+    margin-bottom: 4px;
+}
+.fuguCss .user-div.last-message .f-conv-time-p {
+    margin-right: 10px;
+}
+.fuguCss .fugu-agent-message-divs:hover+.f-conv-time-p,
+.fugu-user-message-divs:hover+.f-conv-time-p{
+    display: inline-block;
+}
+.fuguCss .f-my-message{float: right;text-align: right}
+.fuguCss .f-agent-message {background-color: #e8f5ff}
+.fuguCss .f-my-message .f-conv-name{text-align: right}
+#fugu-container #f-chat-messages{
+    overflow: auto;
+    height: calc(100% - 93px);
+    max-height: calc(100% - 93px);
+    width:100%;
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-animation-name: fugu-messenger-view-slide-left-in;
+    animation-name: fugu-messenger-view-slide-left-in;
+    -webkit-animation-duration: .32s;
+    animation-duration: .32s;
+    -webkit-animation-timing-function: cubic-bezier(.23,1,.32,1);
+    animation-timing-function: cubic-bezier(.23,1,.32,1);
+    -webkit-animation-delay: .23s;
+    animation-delay: .23s;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
+    transition: transform .2s,-webkit-transform .2s;
+    border-bottom: 1px solid #e4e4ed;
+}
+#fugu-container #f-chat-messages.overflow{
+    max-height: calc(100% - 55px);
+    width: calc(100% - 5px);
+    padding-right: 5px;
+}
+#fugu-container #f-messages-wrapper{
+    float: left;
+    width: 100%;
+}
+#fugu-container #f-chat-messages.overflow #f-messages-wrapper{
+    border-right: 1px solid #eaeaea;
+}
+.fuguCss .message-time{float: right;font-size: 10px;color: #a7a6a6}
+.fuguCss .date-dividers{
+    font-family: Proxima-Regular;
+    color: #232a31;
+    font-size: 11px;
+    text-align: center;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-before: 1.5em
+}
+#fugu-container #f-new-conv-div {width: 180px;
+    height: 45px;
+    background-color: #7e93af;
+    border-radius: 40px;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    margin-left: -90px;
+    cursor: pointer;}
+#fugu-container #f-new-conv-p {color: #fff;
+    font-family: Proxima-Regular;
+    font-size: 13.5px;
+    text-align: center;
+    padding-top: 14px;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em
+}
+.fuguCss .f-divide-ul{
+    list-style-type: none;
+    display: table;width: 100%;
+    margin: 7px 0;
+    -webkit-padding-start: 0px;
+    -webkit-margin-before: 7px;
+}
+/*.f-divide-ul li:first-child, .f-divide-ul li:last-child {width: auto}*/
+.fuguCss .f-divide-ul li {width: 125px;vertical-align: middle;text-align: center; margin: 0 auto}
+.fuguCss .f-divide-ul .f-line-left {
+    display: block;
+    height: 1px;
+    background: #fff;
+    background: -moz-linear-gradient(left,rgba(255,255,255,0) 0,#f6f6f6 16%,#999 100%);
+    background: -webkit-gradient(left top,right top,color-stop(0,rgba(255,255,255,0)),color-stop(16%,#f6f6f6),color-stop(100%,#999));
+    background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0,#f6f6f6 16%,#999 100%);
+    background: -o-linear-gradient(left,rgba(255,255,255,0) 0,#f6f6f6 16%,#999 100%);
+    background: -ms-linear-gradient(left,rgba(255,255,255,0) 0,#f6f6f6 16%,#999 100%);
+    background: linear-gradient(to right,rgba(255,255,255,0) 0,#f6f6f6 16%,#999 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#999999', GradientType=1 );
+}
+.fuguCss .f-divide-ul .f-line-right {
+    display: block;
+    height: 1px;
+    background: #999;
+    background: -moz-linear-gradient(left,#999 0,#f6f6f6 84%,rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(left top,right top,color-stop(0,#999),color-stop(84%,#f6f6f6),color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(left,#999 0,#f6f6f6 84%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(left,#999 0,#f6f6f6 84%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(left,#999 0,#f6f6f6 84%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to right,#999 0,#f6f6f6 84%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#999999', endColorstr='#ffffff', GradientType=1 );
+}
+/*#f-conv-ul{overflow: auto;max-height: calc(75vh - 90px)}
+/*-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);*/
+/*::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 1px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    background-color: #ABABAB;
+    border-right: 1px solid #eaeaea;
+
+}
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    opacity: 0.5;
+    outline: 0.5px solid rgb(235,235,235);
+    border-radius: 2px;
+}*/
+
+
+.fuguCss .fugu-typing-indicator {
+    background-color: #cecece;
+    float: left;
+    width: 30px;
+    border-radius: 50px;
+    /* padding: 20px; */
+    height: 9px;
+    display: table;
+    margin: 0 auto;
+    position: relative;
+    -webkit-animation: 2s bulge infinite ease-out;
+    animation: 2s bulge infinite ease-out;
+    bottom: 0;
+    left: 0;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    width: 51px;
+    height: 30px;
+    background-color: rgba(98, 125, 227, 0.1);
+    border: solid 0.5px #dce0e6;
+    text-align: center;
+    padding: 2px 4px;
+    width: 32px;
+    height: 33px;
+    background-color: #fafafa;
+    border: solid 0.5px #dce0e6;
+    border-radius: 10px 10px 10px 7px;
+}
+/*.fugu-typing-indicator:before, .fugu-typing-indicator:after {*/
+/*content: '';*/
+/*position: absolute;*/
+/*bottom: -2px;*/
+/*left: -2px;*/
+/*height: 15px;*/
+/*width: 15px;*/
+/*border-radius: 50%;*/
+/*background-color: #cecece;*/
+/*}*/
+.fugu-typing-indicator:after {
+    height: 10px !important;
+    width: 10px !important;
+    left: -10px !important;
+    bottom: -10px !important;
+}
+.fuguCss .fugu-typing-indicator span {
+    height: 3px !important;
+    width: 3px !important ;
+    float: left !important;
+    margin: 0 1px !important;
+    background-color: #8d8d8e !important;
+    background-color: #2c2333 !important;
+    display: block !important;
+    border-radius: 50% !important;
+    opacity: 0.4 !important;
+    margin-left: 3px !important;
+    margin-top: 12px !important;
+}
+.fuguCss .fugu-typing-indicator span:nth-of-type(1) {
+    -webkit-animation: 1s blink infinite 0.3333s !important;
+    animation: 1s blink infinite 0.3333s !important;
+}
+.fuguCss .fugu-typing-indicator span:nth-of-type(2) {
+    -webkit-animation: 1s blink infinite 0.6666s !important;
+    animation: 1s blink infinite 0.6666s !important;
+}
+.fuguCss .fugu-typing-indicator span:nth-of-type(3) {
+    -webkit-animation: 1s blink infinite 0.9999s !important;
+    animation: 1s blink infinite 0.9999s !important;
+}
+
+@-webkit-keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes bulge {
+    50% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+}
+@keyframes bulge {
+    50% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+}
+
+.fuguCss .tri-right.border.left-top:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -40px;
+    right: auto;
+    top: -8px;
+    bottom: auto;
+    border: 32px solid;
+    border-color: #666 transparent transparent transparent;
+}
+.fuguCss .tri-right.left-top:after{
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -10px;
+    right: auto;
+    top: 0px;
+    bottom: auto;
+    border: 14px solid;
+    border-color: #e8f5ff transparent transparent transparent;
+}
+
+.fuguCss .tri-left.border.right-top:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: -40px;
+    left: auto;
+    top: -8px;
+    bottom: auto;
+    border: 32px solid;
+    border-color: #fff transparent transparent transparent;
+}
+.fuguCss .tri-left.right-top:after{
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: -10px;
+    left: auto;
+    top: 0px;
+    bottom: auto;
+    border: 14px solid;
+    border-color: #fff transparent transparent transparent;
+}
+#loader-div {
+    width: 100%;
+    text-align: center;
+}
+#loader-img {
+    width: 50px;padding-top: 25vh;
+}
+#chat-icon{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    /*background-color: #2196f3;*/
+    white-space: nowrap;
+    text-align: center;
+    margin: 1em 0 0 0;
+    cursor: pointer;
+    float: right;
+    -moz-box-shadow: 0 0 15px #ababab;
+    -webkit-box-shadow: 0 0 15px #ababab;
+    box-shadow: 0 0 15px #ababab;
+}
+.fuguCss .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+#fugu-messenger-header-div .fugu-agent-div p{
+    margin-top: 9px;
+    vertical-align: middle;
+    float: left;
+    margin-left: 10px;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#fugu-container #chat-icon img {
+    vertical-align: middle;
+}
+#fugu-container #new-conv-button{
+    text-align: center;
+    transition: all .12s;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    line-height: 30px;
+    pointer-events: auto;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    border: none;
+    outline: none;
+    font-family: Proxima-Regular;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #6cc64d;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 30px;
+    padding: 0 10px;
+}
+#fugu-container #new-conv-button:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+#fugu-container #f-conv-ul li.theme-border {
+    border-top-color: #f3f4f5 !important;
+    border-bottom-color: #fff !important;
+    border-left: 3px solid #fff;
+    border-right-color: #eaeaea !important;
+}
+#fugu-container #f-conv-ul li.theme-border .channels-abbr,
+#fugu-container #f-conv-ul li.theme-border>img {
+    margin-left: -3px;
+}
+#fugu-container #new-conv-button span {
+    background-image: url('assets/img/new-conv-btn.png');
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: 15px 14px;
+    padding-left: 24px;
+    white-space: nowrap;
+}
+.fuguCss .green-dividers {
+    height: 20px;
+    opacity: 0.7;
+    font-family: Proxima-Regular;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #2c2333;
+}
+#fugu-container #f-messages-wrapper {
+    padding-bottom: 25px;
+}
+#fugu-container #powered-by-fugu-text {
+    font-family: Proxima-Regular;
+    font-size: 12px;
+    text-align: right;
+    color: #bcbdc0;
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    right: 14px;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+}
+
+#fugu-container #powered-by-fugu-text a{
+    color: #95afff;
+    font-size: 12px;
+}
+#fugu-container #f-chat-footer{
+    width: 100%;
+    position: absolute;
+    border-radius: 6.6px;
+    height: 80px;
+    bottom: 0;
+    background: linear-gradient(0deg,#fff,hsla(0,0%,100%,0));
+}
+.upper-cancel-image{
+    display: none;
+}
+.send-message-btns{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    width: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.fuguCss .send-message-btns:hover {
+    opacity: 1;
+}
+.fuguCss .netprob{
+    text-align: center;
+    padding-top: 53%;
+    font-family: Proxima-Regular;
+    line-height: 31px;
+    cursor: pointer;
+}
+@media (max-width: 768px) and (max-height:500px) {
+    #fugu-container .fugu-launcher-open-icon
+    {
+        /* background-size: 25px 25px; */
+        background-size: auto;
+        height: 50px ;
+        width: 50px ;
+        background-position: center 13px;
+    }
+
+
+    #fugu-container .fugu-launcher.opened{
+        display: none;
+    }
+    /*#example-widget-container{*/
+    /*margin-right: 4%;*/
+    /*margin-bottom: 4%;*/
+    /*}*/
+    /*#chat-box {*/
+    /*width:300px*/
+    /*}*/
+    /*#chat-box-header{*/
+    /*width:300px*/
+    /*}*/
+    #fugu-chat-container {
+        margin-right: 0px;
+        margin-bottom: 0px;
+        /*min-width: 100%;*/
+        bottom: 0 !important;
+
+        /*top: 0;*/
+        /*left: 0;*/
+        /*right: 0;*/
+        /*position: absolute;*/
+        /*overflow-y: hidden;*/
+    }
+    /*#fugu-container .fugu-launcher
+    {
+
+        right:0;
+        bottom: 0;
+        top: auto;
+        left: auto;
+    }*/
+
+
+    #fugu-container #chat-box-content {
+        max-height: calc(100% - 60px);
+        height: calc(100% - 60px);
+        bottom: 0;
+        overflow-y: hidden;
+        position: absolute;
+        width: 100%;
+    }
+    #fugu-container #f-conv-ul {
+        max-height: 100%;
+    }
+    #fugu-container #f-chat-messages {
+
+        max-height: calc(100vh - 120px);
+    }
+    #fugu-container #chat-icon {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: 60px;
+        height: 60px;
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
+    .fuguCss .upper-cancel-image {
+        display: block;
+    }
+    .fuguCss .cancel-icon {
+        display: none;
+    }
+
+    #fugu-container #chat-box{
+        width:100%;
+        border-radius: 0px;
+        height:100% !important;
+        bottom:0 !important;
+        /* -webkit-overflow-scrolling: touch; */
+        height:100%
+    }
+    #fugu-container #chat-box-header {
+        width:100%;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        height:60px
+    }
+
+    /*#header-logo-img {*/
+    /*padding: 4px 13px;*/
+    /*width: 20px;*/
+    /*}*/
+    /*#fugu-messenger-header-div{padding-top: 3%}*/
+    #fugu-container #fugu-messenger-header-divp:first-child {
+        font-size: 15px;
+    }
+    #fugu-container #fugu-messenger-header-divp:nth-child(2) {
+        font-size: 12px;
+    }
+    #fugu-container  #message-sub-heading{
+        /*max-width: 195px;*/
+    }
+
+    .fuguCss .channel-labels {
+        font-size: 14px;
+        color: #564f5c;
+
+    }
+    .fuguCss .channel-messages {
+        font-size:14px
+    }
+    .fuguCss .message-wrappers {
+        padding: 5px;
+    }
+    #fugu-container #chat-box-header {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .upper-cancel-image img:hover{background-color: rgba(0,0,0,0.1);
+        border-radius: 2px;
+        padding: 6px;
+    }
+    /*#input-message-div textarea {*/
+    /*padding: 15px;*/
+    /*width: 100%;*/
+    /*height: 60px;*/
+    /*}*/
+    #send-button-img {
+        width: 15%;
+        height: 60px;
+    }
+    .fuguCss .send-message-btns {
+        top: 20px
+    }
+    .fuguCss .message-wrappers {
+        max-width: 200px;
+    }
+    .fuguCss .fugu-composer {
+        position: fixed;
+    }
+}
+
+#fugu-container .fugu-launcher-open-icon {
+    background-image: url('assets/img/chat-icon.png');
+    /* background-size: 32px 36px; */
+    background-repeat: no-repeat;
+    background-position: center 16px;
+    opacity: 1;
+    -webkit-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+@media (max-width: 600px){
+    #fugu-container .fugu-launcher-open-icon
+    {
+        /* background-size: 25px 25px;
+        height: 50px;
+        width: 50px;
+        background-position: center 13px; */
+    }
+
+
+    #fugu-container .fugu-launcher.opened{
+        display: none;
+    }
+    /*#example-widget-container{*/
+    /*margin-right: 4%;*/
+    /*margin-bottom: 4%;*/
+    /*}*/
+    /*#chat-box {*/
+    /*width:300px*/
+    /*}*/
+    /*#chat-box-header{*/
+    /*width:300px*/
+    /*}*/
+    #fugu-chat-container {
+        margin-right: 0px;
+        margin-bottom: 0px;
+        /*min-width: 100%;*/
+        bottom: 0 !important;
+
+        /*top: 0;*/
+        /*left: 0;*/
+        /*right: 0;*/
+        /*position: absolute;*/
+        /*overflow-y: hidden;*/
+    }
+    /*#fugu-container .fugu-launcher
+    {
+
+        right:0;
+        bottom: 0;
+        top: auto;
+        left: auto;
+    }*/
+
+
+    #fugu-container #chat-box-content {
+        max-height: calc(100% - 60px);
+        height: calc(100% - 60px);
+        bottom: 0;
+        overflow-y: hidden;
+        position: absolute;
+        width: 100%;
+    }
+    #fugu-container #f-conv-ul {
+        max-height: 100%;
+    }
+    #fugu-container #f-chat-messages {
+
+        max-height: calc(100vh - 120px);
+    }
+    #fugu-container #chat-icon {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: 60px;
+        height: 60px;
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
+    .fuguCss .upper-cancel-image {
+        display: block;
+    }
+    .fuguCss .cancel-icon {
+        display: none;
+    }
+
+    #fugu-container #chat-box{
+        width:100%;
+        border-radius: 0px;
+        height:100% !important;
+        bottom:0 !important;
+        /* -webkit-overflow-scrolling: touch; */
+        height:100%
+    }
+    #fugu-container #chat-box-header {
+        width:100%;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        height:60px
+    }
+
+    /*#header-logo-img {*/
+    /*padding: 4px 13px;*/
+    /*width: 20px;*/
+    /*}*/
+    /*#fugu-messenger-header-div{padding-top: 3%}*/
+    #fugu-container #fugu-messenger-header-divp:first-child {
+        font-size: 15px;
+    }
+    #fugu-container #fugu-messenger-header-divp:nth-child(2) {
+        font-size: 12px;
+    }
+    #fugu-container  #message-sub-heading{
+        /*max-width: 195px;*/
+    }
+
+    .fuguCss .channel-labels {
+        font-size: 14px;
+        color: #564f5c;
+
+    }
+    .fuguCss .channel-messages {
+        font-size:14px
+    }
+    .fuguCss .message-wrappers {
+        padding: 5px;
+    }
+    #fugu-container #chat-box-header {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .upper-cancel-image img:hover{background-color: rgba(0,0,0,0.1);
+        border-radius: 2px;
+        padding: 6px;
+    }
+    /*#input-message-div textarea {*/
+    /*padding: 15px;*/
+    /*width: 100%;*/
+    /*height: 60px;*/
+    /*}*/
+    #send-button-img {
+        width: 15%;
+        height: 60px;
+    }
+    .fuguCss .send-message-btns {
+        top: 20px
+    }
+    .fuguCss .message-wrappers {
+        max-width: 200px;
+    }
+    .fuguCss .fugu-composer {
+        position: fixed;
+    }
+}
+@media (max-width: 480px) {
+
+    #fugu-chat-container {
+        height: 500px; /* Set a default max height of the modal (adjusted later)*/
+        position: fixed; /* Display modal in the centre of your screen */
+        /*overflow-y: scroll; !*  Ensure that the modal is scroll-able *!*/
+        /*-webkit-overflow-scrolling: touch;  Avoid having to use 2 finger scroll on iOS    */
+    }
+    /*.modal.fade.in{*/
+    /*top: 5px; !* Use more screen real estate *!*/
+    /*}*/
+    #fugu-chat-container{
+        /* Increase the max height of the modal body to try & avoid both it,
+         * and the modal container having scroll bars which results in odd behavior */
+        max-height: 2400px;
+    }
+}
+
+/* Now adjust the height so it handles various screen sizes & orientations */
+/* You could make this as granular as you like, or have it more granular at common screen sizes
+ * but it should start at the height we set on .modal (i.e. 500px) & work down */
+@media (max-width: 480px) and (max-height: 500px){#fugu-chat-container{ height: 450px}}
+@media (max-width: 480px) and (max-height: 450px){#fugu-chat-container{ height: 400px}}
+@media (max-width: 480px) and (max-height: 400px){#fugu-chat-container{ height: 350px}}
+@media (max-width: 480px) and (max-height: 350px){#fugu-chat-container{ height: 300px}}
+@media (max-width: 480px) and (max-height: 300px){#fugu-chat-container{ height: 250px}}
+@media (max-width: 480px) and (max-height: 250px){#fugu-chat-container{ height: 200px}}
+@media (max-width: 480px) and (max-height: 200px){#fugu-chat-container{ height: 150px}}
+
+@media (max-width: 400px) {
+    #message-sub-heading{
+        /*max-width: 150px;*/
+        font-size: 11px;
+    }
+}
+
+/*#logo-img {*/
+/*-webkit-animation:spin 4s linear 0.01s;*/
+/*-moz-animation:spin 4s linear 0.01s;*/
+/*animation:spin 4s linear 0.01s;*/
+/*}*/
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@keyframes anim {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1% {
+        display: block;
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-up-fade-in{
+    0% {
+        opacity:0;
+        transform:  translate(0px,40px)  ;
+    }
+    100% {
+        opacity:1;
+        transform:  translate(0px,0px)  ;
+    }
+}
+
+@-moz-keyframes slide-up-fade-in{
+    0% {
+        opacity:0;
+        -moz-transform:  translate(0px,40px)  ;
+    }
+    100% {
+        opacity:1;
+        -moz-transform:  translate(0px,0px)  ;
+    }
+}
+
+@-webkit-keyframes slide-up-fade-in {
+    0% {
+        opacity:0;
+        -webkit-transform:  translate(0px,40px)  ;
+    }
+    100% {
+        opacity:1;
+        -webkit-transform:  translate(0px,0px)  ;
+    }
+}
+
+@-o-keyframes slide-up-fade-in {
+    0% {
+        opacity:0;
+        -o-transform:  translate(0px,40px)  ;
+    }
+    100% {
+        opacity:1;
+        -o-transform:  translate(0px,0px)  ;
+    }
+}
+
+@-ms-keyframes slide-up-fade-in {
+    0% {
+        opacity:0;
+        -ms-transform:  translate(0px,40px)  ;
+    }
+    100% {
+        opacity:1;
+        -ms-transform:  translate(0px,0px)  ;
+    }
+}
+/*#new-conv-icon-div{*/
+/*float: left;*/
+/*width:10%*/
+/*}*/
+/*#f-new-conv-p{*/
+/*float: left;*/
+/*width:90%*/
+/*}*/
+
+
+.fuguCss .fugu-composer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 55px;
+    max-height: 200px;
+    height: 55px !important;
+}
+
+.fuguCss .fugu-composer textarea {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #565867;
+    background-color: #f4f7f9;
+    resize: none;
+    border: none;
+    transition: background-color .2s ease,box-shadow .2s ease;
+    box-sizing: border-box;
+    padding: 18px;
+    padding-right: 100px;
+    padding-left: 30px;
+    width: 100%;
+    height: 100%;
+    font-family: Proxima-Regular;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.33;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    outline: none;
+    height: 55px !important;
+    min-height:55px !important;
+    max-height:55px !important;
+}
+
+.fuguCss .fugu-composer-buttons {
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+
+.fuguCss .fugu-composer-send-button:before {
+    background-image: url(https://js.intercomcdn.com/images/send-button.553b8d28.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    content: " ";
+    top: 19px;
+    width: 20px;
+    height: 20px;
+    left: 5px;
+    position: absolute;
+    top: 20px;
+    background-position: 50%;
+}
+
+.fuguCss .fugu-composer-send-button {
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+    opacity: .7;
+    height: 55px;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+#fugu-container #input-message-div textarea:focus {
+    background-color: #fff;
+    box-shadow: 0 0 100px 0 rgba(150,165,190,.24);
+}
+#fugu-container #input-message-div textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #fff;
+}
+#fugu-container #input-message-div textarea::-moz-placeholder { /* Firefox 19+ */
+    color: #fff;
+}
+#fugu-container #input-message-div textarea:-ms-input-placeholder { /* IE 10+ */
+    color: #fff;
+}
+#fugu-container #input-message-div textarea:-moz-placeholder { /* Firefox 18- */
+    color: #fff;
+}
+.chat-open {
+    position: fixed !important;
+    overflow: hidden !important;
+    height: 100% !important;
+    width:100% !important;
+}
+
+
+#fugu-container-body{
+    overflow: hidden
+}
+#fugu-container{
+    position: fixed;
+    bottom:0;
+    right:0;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    z-index: 9999999;
+    touch-action: none;
+    line-height: 1;
+    letter-spacing: 0px;
+}
+#fugu-container *{
+    box-sizing: border-box;
+}
+
+
+#fugu-container .fugu-launcher {
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    background: #627de3;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /*overflow: hidden;*/
+    font-family: "intercom-font", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    float: right;
+    box-shadow: 0 1px 6px rgba(0,0,0,.06),0 2px 32px rgba(0,0,0,.16)!important;
+    transition: all 80ms ease-in-out!important;
+}
+#fugu-container .fugu-launcher.opened{
+    transform: rotate(90deg);
+}
+#fugu-container .fugu-launcher:hover{
+    box-shadow: 0 2px 8px rgba(0,0,0,.09),0 4px 40px rgba(0,0,0,.24)!important;
+}
+.totalMessageCount {
+    position: absolute;
+    z-index: 10000000;
+    right: -6px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    margin-left: 1px;
+    font-size: 10px;
+    float: left;
+    margin-top: -6px;
+    margin-bottom: 0px;
+    text-align: center;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: rgb(255, 255, 255);
+    font: bold 15px/20px "Helvetica Neue", sans-serif;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+    display: block;
+    background-color: #e02a46;
+}
+
+#clearNewChatMessage{
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    background-color:  #88838c;
+    padding: 8px 10px;
+    font-family: Proxima-Sbold;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    color: #ffffff;
+    /* margin-left: calc( 100% - 80px ); */
+    margin-bottom: 15px;
+    margin-top: -45px;
+    float: right;
+}
+
+#clearNewChatMessage:hover{
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-family: Proxima-Sbold;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    /* margin-left: calc( 100% - 80px ); */
+    margin-bottom: 15px;
+    margin-top: -45px;
+    float: right;
+    background-color: #ffffff;
+    /* opacity: 0.6; */
+    border-radius: 5px;
+    border: solid 2px #88838c;
+    color: #88838c;
+
+}
+
+#clearNewChatMessage:hover .clearNewMessageIcon, #clearNewChatMessage.hover .clearNewMessageIcon {
+    height: 8px;
+    width: 8px;
+    display: block;
+    background-image: url('assets/img/hover_close.png');
+    background-size: cover;
+    float: right;
+    margin-top:4px
+
+}
+
+.newChatMessage {
+    width: 336px;
+    max-height: 114px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
+    border-radius: 5px;
+    padding: 20px;
+    font-family: Proxima-Light;
+    font-size: 14px;
+    text-align: left;
+    color: #2c2333;
+    right : 0px;
+    transition: all 0.3s;
+}
+
+.newChatMessage:hover{
+    background-color: #f8f9ff;
+}
+
+.clearNewMessageIcon {
+    height: 8px;
+    width: 8px;
+    display: block;
+    background-image: url('assets/img/close.png');
+    background-size: cover;
+    float: right;
+    margin-top:4px
+}
+
+
+#fugu-container .fugu-launcher:hover{
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 0 4px 9px rgba(0, 0, 0, 0.24);
+}
+#fugu-container .fugu-launcher-open-icon.opened{
+    background-image: url('assets/img/cancel_only_icon.png');
+    background-position: center 20px;
+    background-size: 30%;
+}
+
+.fuguCss .fugu-launcher-chat-starter-div {
+    width: 288px;
+    height: 60px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.fugu-messenger {
+    width: 370px;
+    height: 540px;
+    border-radius: 6.6px;
+    background-color:white;
+    margin-bottom: 14px;
+    position: relative;
+    opacity: 1;
+
+}
+
+.fugu-messenger-header-div {
+    width: 100%;
+    height: 176px;
+    border-top-right-radius: 6.6px;
+    border-top-left-radius: 6.6px;
+    background-color: #627de3;
+    padding: 18px 13px 111px;
+    border-top-left-radius: inherit!important;
+    border-top-right-radius: inherit!important;
+}
+
+.fugu-messenger-header-div p{
+    font-family: Proxima-Regular;
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0 0 4px;
+    font-weight: bold;
+    line-height: inherit;
+}
+.fugu-messenger-header-div #message-sub-heading{
+    font-family: Proxima-Light;
+    font-size: 14px;
+}
+.fugu-messenger-main-div {
+    /* width: 342px; */
+    height: 438px;
+    border-radius: 6.6px;
+    /* background-color: #ffffff; */
+    margin-top: -100px;
+    margin: 0 auto;
+    /* margin-top: -103px; */
+    position: relative;
+}
+
+.fuguCss .fugu-chat-div {
+    display: inline-block;
+    max-height: calc(100% - 90px);
+    overflow: auto;
+    padding-top: 20px;
+}
+
+.fuguCss .fugu-agent-message-divs {
+    max-width: 78%;
+    background-color: #fafafa;
+    border: solid 0.5px #dce0e6;
+    font-family: Proxima-Light;
+    font-size: 14px;
+    text-align: left;
+    color: #2c2333;
+    border-radius: 6.6px;
+    padding: 8px 10px;
+    float: left;
+    margin: 1.5px 10px;
+    width: auto;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.fuguCss .fugu-user-message-divs {
+    max-width: 78%;
+    background-color: #627de3;
+    border: solid 0.5px #dce0e6;
+    font-family: Proxima-Light;
+    font-size: 14px;
+    text-align: left;
+    color: #ffffff;
+    border-radius: 6.6px;
+    padding: 8px 10px;
+    float: right;
+    margin: 1.5px 10px;
+    color: #2c2333;
+    background-color: #eeeeee;
+    border: solid 0.5px #bdbdbd;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.fuguCss .fugu-text-input textarea {
+    /*border: 0px;*/
+    /*resize: none;*/
+    /*border-top: 1px solid #e4e4ed;*/
+    /*width: 100%;*/
+    /*border-bottom: 1px solid #e4e4ed;*/
+    /*height: 55px;*/
+    /*outline: none;*/
+    /*box-sizing: border-box;*/
+    /*padding-left: 10px;*/
+    /*padding-top: 18px;*/
+    /*font-family: Proxima-Light;*/
+    /*font-size: 14px;*/
+    /*text-align: left;*/
+    /*color: #51445c;*/
+    position: relative;
+    bottom: 50px;
+    left: 0;
+    color: #565867;
+    resize: none;
+    border: none;
+    outline: none;
+    transition: background-color .2s ease, box-shadow .2s ease;
+    box-sizing: border-box;
+    padding: 12px;
+    padding-right: 100px;
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    font-family: Proxima-Light;
+    font-weight: 400;
+    line-height: 1;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.fugu-messenger-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 0;
+    max-height: 120px;
+    border-top: 1px solid rgba(228, 228, 237, 0.72);
+}
+.fugu-messenger-footer.firefox{
+    border-top: 2px solid rgba(228, 228, 237, 0.72);
+}
+#fugu-container .fugu-messenger-footer pre {
+    box-sizing: border-box;
+    padding: 13px;
+    padding-right: 100px;
+    padding-left: 30px;
+    width: 100%;
+    height: 100%;
+    font-family: Proxima-Light;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.33;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    visibility: hidden;
+    margin: 0;
+}
+#fugu-container .fugu-messenger-footer .composer-buttons {
+    position: absolute;
+    bottom: 14px;
+    right: 15px;
+}
+#fugu-container .fugu-messenger-footer .composer-buttons .send-button{
+    height: 30px;
+    border-radius: 5px;
+    background-color: #627de3;
+    border: 2px solid #627de3;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: Proxima-Regular;
+    cursor: pointer;
+    outline:none;
+    width: 65px;
+    text-align: center;
+    padding: 0px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+#fugu-container .fugu-messenger-footer .composer-buttons .send-button:hover{
+    background-color: #fff;
+    color: #627de3;
+}
+#fugu-container .fugu-messenger-footer .composer-buttons .send-button img{
+    display: none;
+}
+.fuguCss .fugu-send-icons {
+    bottom: 0;
+    margin-left: 10px;
+    /* display: none; */
+    height: 27px;
+    position: absolute;
+}
+
+.fuguCss .fugu-send-icons img {
+    cursor: pointer;
+}
+
+#agent-img{
+    float: left;
+    padding: 0;
+    width: 34px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+#emoji-img {
+    margin-left: 5px;
+    display :none;
+}
+@media (width: 768px) {
+    .fuguCss .fugu-messenger
+    {
+        /*height: auto;*/
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 768px) and (max-height: 500px)  {
+    #fugu-container .fugu-launcher
+    {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        right: 0 ;
+        bottom:0;
+        top: auto;
+        left: auto;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+    }
+
+    .newChatMessage {
+        width: 266px;
+        max-height: 114px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+        margin-bottom: 75px;
+        margin-right: 10px;
+        border-radius: 5px;
+        padding: 20px;
+        font-family: Proxima-Light;
+        font-size: 14px;
+        text-align: left;
+        color: #2c2333;
+    }
+
+    #clearNewChatMessage {
+        width: 80px;
+        height: 30px;
+        border-radius: 5px;
+        background-color:  #88838c;
+        padding: 8px 10px;
+        font-family: Proxima-Sbold;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: left;
+        color: #ffffff;
+        /* margin-left: calc( 100% - 80px ); */
+        margin-bottom: 15px;
+        margin-top: -45px;
+        margin-right: 10px;
+        float: right;
+    }
+
+    .totalMessageCount {
+        position: absolute;
+        z-index: 10000000;
+        right: -4px;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+        font-weight: 600;
+        display: block;
+        margin-left: 1px;
+        font-size: 10px;
+        float: left;
+        margin-top: -6px;
+        margin-bottom: 0px;
+        text-align: center;
+        padding: 3px 7px;
+        border-radius: 100px;
+        background: rgb(255, 255, 255);
+        font: bold 13px/15px "Helvetica Neue", sans-serif;
+        color: white;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+        background-color: #fc334b;
+    }
+
+    #fugu-container .fugu-messenger-footer .composer-buttons .send-button{
+        height: 30px;
+        width: 30px;
+        padding:6px;
+    }
+    #fugu-container .fugu-messenger-footer .composer-buttons .send-button img{
+        display: block;
+        width: 17px;
+        margin-left: 1px;
+        margin-top: 0px;
+    }
+    #fugu-container .fugu-messenger-footer .composer-buttons .send-button span{
+        display: none;
+    }
+
+    /*.fugu-launcher{
+        display: none;
+    }*/
+    .fugu-messenger-main-div{
+        height: calc(100% - 60px);
+        width: auto !important;
+    }
+    .fugu-messenger{
+        width: 100%;
+        height: 100%;
+        border: none;
+        /* border-radius: 0px; */
+        margin-bottom: 0px;
+    }
+    #fugu-container {
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width:100%;
+        height: 100%;
+    }
+    /*.fugu-agent-div {
+        display: none;
+    }*/
+    .fugu-messenger-header-div {
+        width: 100%;
+        /* border-radius: 0px; */
+        border-top-left-radius: inherit!important;
+        border-top-right-radius: inherit!important;
+    }
+}
+
+@media (max-width: 600px) {
+    #fugu-container .fugu-launcher
+    {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        right: 0 ;
+        bottom:0;
+        top: auto;
+        left: auto;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+    }
+
+    .newChatMessage {
+        width: 266px;
+        max-height: 114px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+        margin-bottom: 75px;
+        margin-right: 10px;
+        border-radius: 5px;
+        padding: 20px;
+        font-family: Proxima-Light;
+        font-size: 14px;
+        text-align: left;
+        color: #2c2333;
+    }
+
+    #clearNewChatMessage {
+        width: 80px;
+        height: 30px;
+        border-radius: 5px;
+        background-color:  #88838c;
+        padding: 8px 10px;
+        font-family: Proxima-Sbold;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: left;
+        color: #ffffff;
+        /* margin-left: calc( 100% - 80px ); */
+        margin-bottom: 15px;
+        margin-top: -45px;
+        margin-right: 10px;
+        float: right;
+    }
+
+    .totalMessageCount {
+        position: absolute;
+        z-index: 10000000;
+        right: -4px;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+        font-weight: 600;
+        display: block;
+        margin-left: 1px;
+        font-size: 10px;
+        float: left;
+        margin-top: -6px;
+        margin-bottom: 0px;
+        text-align: center;
+        padding: 3px 7px;
+        border-radius: 100px;
+        background: rgb(255, 255, 255);
+        font: bold 13px/15px "Helvetica Neue", sans-serif;
+        color: white;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+        background-color: #fc334b;
+    }
+
+    #fugu-container .fugu-messenger-footer .composer-buttons .send-button{
+        height: 30px;
+        width: 30px;
+        padding: 6px;
+        bottom: 0
+    }
+    #fugu-container .fugu-messenger-footer .composer-buttons .send-button img{
+        display: block;
+        width: 17px;
+        margin-left: 1px;
+        margin-top: 0px;
+    }
+    #fugu-container .fugu-messenger-footer .composer-buttons .send-button span{
+        display: none;
+    }
+
+    /*.fugu-launcher{
+        display: none;
+    }*/
+    .fugu-messenger-main-div{
+        height: calc(100% - 60px);
+        width: auto !important;
+
+    }
+    .fugu-messenger{
+        width: 100%;
+        height: 100%;
+        border: none;
+        /* border-radius: 0px; */
+        margin-bottom: 0px;
+    }
+    #fugu-container {
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width:100%;
+        height: 100%;
+        box-sizing: border-box;
+        /*padding: 10px;*/
+    }
+    /*.fugu-agent-div {
+        display: none;
+    }*/
+    .fugu-messenger-header-div {
+        width: 100%;
+        /* border-radius: 0px; */
+        border-top-left-radius: inherit!important;
+        border-top-right-radius: inherit!important;
+    }
+}
+
+.fuguCss .fugu-text-input{
+    /* height: 50px; */
+    position: absolute;
+    width: 100%;
+    bottom: 34px;
+    border-bottom: 1px solid #e4e4ed;
+    /* border-top: 1px solid #e4e4ed; */
+}
+
+.fuguCss .fugu-text-input textarea::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #565867 !important;
+}
+.fuguCss .fugu-text-input textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #565867 !important;
+
+}
+.fuguCss .fugu-text-input textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #565867 !important;
+
+}
+.fuguCss .fugu-text-input textarea:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color:#565867 !important;
+}
+.fuguCss .file-upload {
+    display: none;
+}
+.fugu-media-message{
+    height: 100%;
+    width: 100%;
+}
+
+.fuguCss .netprob{
+    height:100%;
+    width:100%;
+}
+
+#fugu-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
+    opacity: 0.7;
+    filter: alpha(opacity = 70) !important;
+    display: block;
+    z-index: 16777270;
+}
+
+#overlayContent{
+    position: fixed;
+    width: 100%;
+    top: 100px;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    z-index: 16777271;
+}
+
+#contentGallery{
+    margin: 0px auto;
+}
+
+.imgBig, #imgSmall{
+    cursor: pointer;
+}
+
+.hideAll{
+    display:none !important;
+}
+
+.emojionearea-standalone {
+    float: right;
+}
+
+.emojionearea, .emojionearea.form-control {
+    display: block  !important;
+    position: absolute!important;
+    bottom: 0;
+    width: calc( 100% - 80px );
+    font-size: 14px !important;
+    background-color: #FFF;
+    border: none  !important;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-box-shadow: none  !important;
+    box-shadow: none  !important;
+    -moz-transition: border-color .15s ease-in-out,-moz-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    /* -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out; */
+    /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+}
+
+
+.emojionearea .emojionearea-picker.emojionearea-picker-position-top {
+    right: -14px;
+    position: absolute !important;
+    bottom: 100px !important;
+    left: 0 !important;
+    width: calc( 100vw - 50px ) !important;
+}
+
+.emojionearea .emojionearea-picker .emojionearea-wrapper {
+    position: relative;
+    height: 276px;
+    width: calc( 100vw - 50px ) !important;
+}
+
+.emojionearea-wrapper:after {
+    display: none !important;
+}
+
+
+.emojionearea .emojionearea-picker .emojionearea-tones {
+    position: absolute;
+    bottom: 52px !important;
+    top: inherit !important;
+    right: 10px;
+    height: 22px;
+    z-index: 95;
+    display:none !important;
+}
+
+.emojionearea-filter-flags{
+    display:none !important;
+}
+
+.emojionearea .emojionearea-editor {
+    display: block !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    overflow: auto  !important;
+    padding: 11px 24px 6px 12px  !important;
+    line-height: 1.4  !important;
+    font-size: inherit  !important;
+    color: #555  !important;
+    background-color: transparent;
+    border: 0;
+    cursor: text;
+    margin-right: 1px;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.emojionearea .emojionearea-button {
+    z-index: 5;
+    position: absolute;
+    right: 3px !important;
+    top: 9px !important;
+    width: 24px;
+    height: 24px;
+    opacity: .6;
+    cursor: pointer;
+    -moz-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+}
+
+.dropdown-menu.textcomplete-dropdown[data-strategy=emojionearea]{
+    z-index: 10000000 !important;
+    border: 243px !important;
+    bottom: 200px !important;
+    height: 80px !important;
+    overflow: scroll !important;
+}
+
+.emojionearea .emojionearea-picker .emojionearea-scroll-area .emojibtn {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 30px !important;
+    height: 30px !important;
+    float: left;
+    display: block;
+    margin: 1px;
+    padding: 3px;
+}
+
+[name="flags"] { display: none;}
+
+.fuguCss .fugu-send-icons img {
+    opacity: 0.8;
+
+}
+
+.fuguCss .fugu-send-icons img:hover {
+    opacity: 1;
+
+}
+
+img.emoji {
+    display: inline-block;
+    vertical-align: bottom;
+}
+.fugu-user-message-divs img {
+    display: inline-block;
+    vertical-align: bottom;
+}
+#fugu-container #fuguLauncherContainer{
+    background-size: inherit;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    border-radius: 50%;
+    background-position: center 16px;
+    height: 60px;
+    width: 60px;
+    margin: 0;
+    right: 10px;
+    bottom: 10px;
+}
+.upper-case {
+    text-transform: uppercase
+}
+.hidden{
+    display: none;
+}
+#fuguChatsListContainer{
+    height: 100%;
+    top:0px;
+}
+.proxima-regular{
+    font-family: 'Proxima-Regular';
+    letter-spacing: 0.5px;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.capitalize{
+    text-transform: capitalize;
+}
+:root {
+    --color:#1F8CEB;
+    --background-url: url('assets/img/texture.png');
+    --align-typing: left;
+  }
+
+  .cancel-btn-header2{
+      display: block !important;
+      background-image: url('assets/img/cancelbtn.svg');
+      background-repeat: no-repeat;
+      height: 20px;
+      width: 20px;
+      background-position: center;
+      position: absolute !important;
+      right: 30px !important;
+      opacity: 0.9;
+      cursor: pointer;
+  }
+ /*@media only screen and (max-device-width: 667px),*/
+ /*screen and (max-width: 369px), screen and (min-height: 591px), screen and (min-width: 371px){*/
+     /*.cancel-btn-header2{*/
+         /*display: block!important;*/
+     /*}*/
+ /*}*/
+ .header-content {
+    max-width: calc(100% - 25px );
+    display: flex;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+
+
+
+.white-bg {
+  background-color: #ffffff !important;
+}
+
+
+.input-title {
+  display: inline-block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #51445c;
+}
+
+.default-input {
+  padding: 8px 40px 8px 10px;
+  border: 1px solid #e4e7ec;
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 14px;
+}
+.default-input:focus {
+  /*-moz-box-shadow:    0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);*/
+  /*-webkit-box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);*/
+  /*box-shadow:         0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);*/
+  border-color: var(--color);
+}
+.btn {
+  padding: 8px 7px;
+  border: 1px solid var(--color);
+  background-color: var(--color);
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+.btn:disabled{
+  opacity: 0.6;
+}
+.btn-white {
+  background-color: #ffffff;
+  color: var(--color);
+}
+.btn-checked {
+  color: #6cc64d;
+  border-color: #e4e7ec;
+  border-left: none;
+  padding: 7px 7px;
+}
+.btn:not(.btn-nohover):hover {
+  background-color: transparent;
+  color: var(--color);
+}
+.btn-checked:hover {
+  cursor: pointer;
+}
+.rel {
+  position: relative;
+}
+.abs {
+  position: absolute;
+}
+.group-addon {
+  left: 0;
+  bottom: 0;
+  color: #ffffff;
+}
+.group-addon .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.right-aligned {
+  left: unset;
+  right: 0;
+}
+
+
+/*==============tooltip================*/
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+.tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  display: none;
+  width: 100px;
+  left: 50%;
+  margin-left: -54px;
+  z-index: 1;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: Proxima-Regular;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -4px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #000000;
+}
+.tooltip-container:hover .tooltip {
+  display: inline-block;
+}
+/** bootstrap 4 classes **/
+.d-none{
+  display: none !important;
+}
+.d-flex{
+  display: flex !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important;
+}
+.flex-column{
+  flex-direction: column !important;
+  -ms-flex-direction: column !important;
+  -webkit-flex-direction: column !important;
+}
+.justify-content-center{
+  justify-content: center !important;
+  -webkit-justify-content: center !important;
+}
+.justify-content-around{
+  justify-content: space-around !important;
+  -webkit-justify-content: space-around !important;
+}
+.justify-content-between{
+  justify-content: space-between !important;
+  -webkit-justify-content: space-between !important;
+}
+.justify-content-end{
+  justify-content: flex-end !important;
+  -webkit-justify-content: flex-end !important;
+}
+.align-items-center{
+  align-items: center !important;
+  -webkit-align-items: center !important;
+}
+.m-0 {margin: 0;}
+.m-1 {margin: 0.25rem;}
+.m-2 {margin: 0.5rem;}
+.m-3 {margin: 1rem;}
+.m-4 {margin: 1.5rem;}
+.m-5 {margin: 3rem;}
+.mt-0 {margin-top: 0;}
+.mt-1 {margin-top: 0.25rem;}
+.mt-2 {margin-top: 0.5rem;}
+.mt-3 {margin-top: 1rem;}
+.mt-4 {margin-top: 1.5rem;}
+.mt-5 {margin-top: 3rem;}
+.mb-0 {margin-bottom: 0;}
+.mb-1 {margin-bottom: 0.25rem;}
+.mb-2 {margin-bottom: 0.5rem;}
+.mb-3 {margin-bottom: 1rem;}
+.mb-4 {margin-bottom: 1.5rem;}
+.mb-5 {margin-bottom: 3rem;}
+.mr-0 {margin-right: 0;}
+.mr-1 {margin-right: 0.25rem;}
+.mr-2 {margin-right: 0.5rem;}
+.mr-3 {margin-right: 1rem;}
+.mr-4 {margin-right: 1.5rem;}
+.mr-5 {margin-right: 3rem;}
+.ml-0 {margin-left: 0;}
+.ml-1 {margin-left: 0.25rem;}
+.ml-2 {margin-left: 0.5rem;}
+.ml-3 {margin-left: 1rem;}
+.ml-4 {margin-left: 1.5rem;}
+.ml-5 {margin-left: 3rem;}
+
+.p-0 {padding: 0!important;}
+.p-1 {padding: 0.25rem!important;}
+.p-2 {padding: 0.5rem!important;}
+.p-3 {padding: 1rem!important;}
+.p-4 {padding: 1.5rem!important;}
+.p-5 {padding: 3rem!important;}
+.pt-0 {padding-top: 0;}
+.pt-1 {padding-top: 0.25rem;}
+.pt-2 {padding-top: 0.5rem;}
+.pt-3 {padding-top: 1rem;}
+.pt-4 {padding-top: 1.5rem;}
+.pt-5 {padding-top: 3rem;}
+.pb-0 {padding-bottom: 0;}
+.pb-1 {padding-bottom: 0.25rem;}
+.pb-2 {padding-bottom: 0.5rem;}
+.pb-3 {padding-bottom: 1rem;}
+.pb-4 {padding-bottom: 1.5rem;}
+.pb-5 {padding-bottom: 3rem;}
+.pr-0 {padding-right: 0;}
+.pr-1 {padding-right: 0.25rem;}
+.pr-2 {padding-right: 0.5rem;}
+.pr-3 {padding-right: 1rem;}
+.pr-4 {padding-right: 1.5rem;}
+.pr-5 {padding-right: 3rem;}
+.pl-0 {padding-left: 0;}
+.pl-1 {padding-left: 0.25rem;}
+.pl-2 {padding-left: 0.5rem;}
+.pl-3 {padding-left: 1rem;}
+.pl-4 {padding-left: 1.5rem;}
+.pl-5 {padding-left: 3rem;}
+
+.w-100{
+  width: 100%;
+}
+.w-50{
+  width: 50%;
+}
+.h-100{
+  height: 100%;
+}
+.form-control{
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  outline: none;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cursor-hand{
+  cursor: pointer;
+}
+.text-center{
+  text-align: center;
+}
+.rounded-circle{
+  border-radius: 50% !important;
+}
+.position-absolute{
+  position: absolute;
+}
+.position-relative{
+  position: relative;
+}
+.outline-none{
+  outline: none;
+}
+.box-shadow-none{
+  box-shadow: none;
+}

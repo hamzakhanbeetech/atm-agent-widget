@@ -1,0 +1,82 @@
+<div id="fugu-messenger" class="fuguCss fugu-messenger">
+  <div id="fugu-messenger-header-div" class="proxima-regular">
+      <h1>this is conversation header</h1>
+    <div class="header-content">
+      <span class="span-channel-image">
+        <!-- <img class="channel-image" *ngIf="commonService.configData.business_image" [src]="commonService.configData.business_image"/> -->
+        <!--<span class="channel-image" *ngIf="!commonService.userDetails.business_image">{{channelAcronym(commonService.userDetails.business_name)}}</span>-->
+      </span>
+      <div>
+        <span class="conversation-header">
+          <h4 class="capitalize">Conversations List</h4>
+          <!--<h4 class="capitalize">{{(commonService.configData["text-title"])}}</h4>-->
+          <!--<p class="sub-title">{{(commonService.configData["text-subtitle"])}}</p>-->
+        </span>
+      </div>
+    </div>
+    <div (click)="oncrossClick()" class="cancel-btn-header2"></div>
+  </div>
+
+
+  <div id="fugu-messenger-main-div" (wheel)="disableScroll($event,scrollWidgetChatDiv)" (touchmove)="onTouchMove($event,scrollWidgetChatDiv)"
+    #scrollWidgetChatDiv class="fuguCss fugu-messenger-main-div conversations-container" (scroll)="onScroll($event)">
+    <div id="loader-div" *ngIf="showLoader" [@fadeOut]>
+      <img id="loader-img" src="assets/img/ring.gif" />
+    </div>
+    <!-- <div *ngFor="let key of conversations |keys |orderBy:conversations" class="conversation proxima-regular" (click)="onConversationClick(key)">
+      div> for keys only
+        <span>
+          <img class="channel-image" *ngIf="conversations[key].channel_image" [src]="conversations[key].channel_image" />
+          <span class="channel-image" *ngIf="!conversations[key].channel_image">AB</span>
+        </span>
+        {{conversations[key].channel_name}}
+      </div>
+    </div> -->
+    <div class="no-chat-div" *ngIf="(conversations|keys).length == 0 && !showLoader && !showErrorMessage" [@fadeOut]>
+      <img src="assets/img/no-conversation-found.png">
+      <div class="no-conv-text">No conversations found</div>
+    </div>
+    <div class="no-chat-div" *ngIf="(conversations|keys).length == 0 && !showLoader && showErrorMessage">
+        <img src="assets/img/no-conversation-found.png">
+      <div class="no-conv-text">{{errorMessage}}</div>
+    </div>
+    <div id="conv-list-cont" [@fadeInCurtain]="(conversations|keys).length" #activeChatsContainer>
+
+      <div *ngFor="let conv of conversations |keys | orderBy:conversations" class="conversation proxima-regular" (click)="onConversationClick(conv.unique_id)">
+        <div class="conv-container">
+          <span class="span-channel-image">
+            <!-- <img class="channel-image" *ngIf="conversations[conv.unique_id].agent_image || conversations[conv.unique_id].channel_image" [src]="conversations[conv.unique_id].agent_image || conversations[conv.unique_id].channel_image"
+            /> -->
+            <span class="channel-image">{{channelAcronym(conv.label)}}</span>
+          </span>
+          <span class="span-channel-info">
+            <h4 class="capitalize">{{conversations[conv.unique_id].label}}</h4>
+            <p *ngIf="![MessageTypeEnum.Image_Message, MessageTypeEnum.File_Message, MessageTypeEnum.Payment_Message].includes(conversations[conv.unique_id].message_type)">{{conversations[conv.unique_id].message}}</p>
+              <p *ngIf="conversations[conv.unique_id].message_type == MessageTypeEnum.Image_Message">
+                {{conversations[conv.unique_id].last_sent_by_user_type== UserTypeEnum.Customer?"You sent a photo.":"Received a photo"}}
+              </p>
+              <p *ngIf="conversations[conv.unique_id].message_type == MessageTypeEnum.File_Message">
+              {{conversations[conv.unique_id].last_sent_by_user_type== UserTypeEnum.Customer?"You sent a file.":"Received a file"}}
+            </p>
+            <ng-container *ngIf="conversations[conv.unique_id].message_type == MessageTypeEnum.Payment_Message">
+              <p>Payment Request</p>
+            </ng-container>
+
+          </span>
+
+          <span class="badge" *ngIf="conversations[conv.unique_id].is_new_count">{{conversations[conv.unique_id].is_new_count}}</span>
+          <span class="badge" *ngIf="conversations[conv.unique_id].unread_count">{{conversations[conv.unique_id].unread_count}}</span>
+          <span class="date-time" *ngIf="conversations[conv.unique_id].channel_id!=-1">{{conversations[conv.unique_id].last_updated_at|datetime}}</span>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="last-div-conversation proxima-regular" *ngIf="((conversations|keys).length>4)"></div>
+    <!--<div class="btn-new-conv-div">
+      <button class="btn-new-conversation proxima-regular" (click)="newConversation()">
+        <img src="/assets/img/new-conversation.svg" />New Conversation
+      </button>
+    </div>-->
+  </div>
+

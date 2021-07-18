@@ -1,0 +1,18 @@
+<div *ngFor="let notification of notifications |slice:notifications.length-1" class="notifications-container" [@fadeSlideIn]="alive">
+  <div class="notification-close-row">
+    <div class="btn-notification-close proxima-regular" (click)="onClear()">Clear
+      <span class="clear-cross"></span>
+    </div>
+  </div>
+  <div class="notification-message-row">
+    <div class="notification-message proxima-regular" (click)="onNotificationClick()">
+      <p *ngIf="notification.agentName">
+        <b>{{notification.agentName}}</b> from {{notification.businessName}}
+      </p>
+      <p *ngIf="!notification.agentName">
+        <b>{{notification.businessName}}</b>
+      </p>
+      <p>{{notification.message}}</p>
+    </div>
+  </div>
+</div>

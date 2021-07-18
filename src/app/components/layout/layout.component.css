@@ -1,0 +1,56 @@
+.video-action-buttons{
+  position: absolute;
+  top: 75px;
+  left: 0;
+  font-family: Proxima-SBold;
+  z-index: 1;
+  width: 100%;
+  background: rgba(97,94,99,0.95);
+  box-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+.incoming-call{
+  color: white;
+  text-align: center;
+  line-height: 1.4;
+}
+#buttons .btn {
+  position: relative;
+  padding: 7px 30px;
+  margin: .3125rem 20px;
+  font-size: .90rem;
+  font-weight: 400;
+  line-height: 1.428571;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-radius: .2rem;
+  outline: 0;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1);
+  will-change: box-shadow,transform;
+}
+#buttons .btn-success {
+  cursor: pointer;
+  color: #fff;
+  background-color: #4caf50;
+  border-color: #4caf50;
+  /*box-shadow: 0 2px 2px 0 rgba(76,175,80,.14), 0 3px 1px -2px rgba(76,175,80,.2), 0 1px 5px 0 rgba(76,175,80,.12);*/
+}
+
+#buttons .btn-success:hover{
+  box-shadow: 0 14px 26px -12px rgba(76,175,80,.42), 0 4px 23px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(76,175,80,.2);
+}
+#buttons .btn-danger {
+  cursor: pointer;
+  color: #fff;
+  background-color: #f44336;
+  border-color: #f44336;
+  /*box-shadow: 0 2px 2px 0 rgba(244,67,54,.14), 0 3px 1px -2px rgba(244,67,54,.2), 0 1px 5px 0 rgba(244,67,54,.12);*/
+}
+
+
+#buttons .btn-danger:hover{
+  box-shadow: 0 14px 26px -12px rgba(244,67,54,.42), 0 4px 23px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(244,67,54,.2);
+}
